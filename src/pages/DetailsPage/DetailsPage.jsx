@@ -12,7 +12,7 @@ export const DetailsPage = () => {
 
   useEffect(() => {
     fetchDetails();
-  }, []);
+  }, [movieId]);
 
   const fetchDetails = async () => {
     setLoading(true);
@@ -31,9 +31,7 @@ export const DetailsPage = () => {
   return (
     <>
       {loading && <Loader loading={loading} />}
-
       <button>go back</button>
-
       {details !== null && <MovieDetails data={details} />}
     </>
   );

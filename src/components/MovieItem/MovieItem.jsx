@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 export const MovieItem = ({ items }) => {
   console.log(items);
   const list = items.map(({ id, title }) => {

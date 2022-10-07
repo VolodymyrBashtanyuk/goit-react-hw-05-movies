@@ -25,4 +25,20 @@ export const ApiDetails = async id => {
   return responce.data;
 };
 
+export const ApiCast = async (id, data) => {
+  const responce = await axios.get(
+    `${BASE_URL}/${details}/${id}/${data}?api_key=${KEY}&language=en-US`
+  );
+  return responce.data.cast;
+};
+
+export const ApiReviews = async (id, data) => {
+  const responce = await axios.get(
+    `${BASE_URL}/${details}/${id}/${data}?api_key=${KEY}&language=en-US`
+  );
+  return responce.data.results;
+};
+
 // https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
+
+// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
