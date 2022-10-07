@@ -1,4 +1,3 @@
-// import { useEffect } from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ApiCast } from 'serviceApi/ServiceApi';
@@ -29,7 +28,6 @@ export const Cast = () => {
       setLoading(false);
     }
   };
-  // console.log(cast);
 
   return (
     <>

@@ -9,8 +9,8 @@ import { Reviews } from './Additionalnfo/Reviews/Reviews';
 export const App = () => {
   return (
     <>
-      <Navication />
-      <Routes path="/">
+      <Navication path="/" />
+      <Routes>
         <Route index element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:movieId" element={<DetailsPage />}>

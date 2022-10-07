@@ -38,7 +38,3 @@ export const ApiReviews = async (id, data) => {
   );
   return responce.data.results;
 };
-
-// https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
-
-// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US

@@ -1,14 +1,17 @@
 import { ApiDetails } from 'serviceApi/ServiceApi';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { Loader } from 'components/Loader/Loader';
+// import { Link } from 'react-router-dom';
+import { HiChevronDoubleLeft } from 'react-icons/hi';
 
 export const DetailsPage = () => {
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const { movieId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchDetails();
@@ -28,10 +31,17 @@ export const DetailsPage = () => {
     }
   };
 
+  const goBack = () => {
+    navigate('/');
+  };
+
   return (
     <>
       {loading && <Loader loading={loading} />}
-      <button>go back</button>
+      <button onClick={goBack}>
+        <HiChevronDoubleLeft />
+        go back
+      </button>
       {details !== null && <MovieDetails data={details} />}
     </>
   );
