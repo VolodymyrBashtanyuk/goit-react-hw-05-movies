@@ -1,16 +1,17 @@
 import { NavLink } from 'react-router-dom';
+import { Wrapper, Item } from './NavigationStyle';
 
 export const Navication = () => {
   return (
     <nav>
-      <ul>
-        <li>
+      <Wrapper>
+        <Item>
           <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
+        </Item>
+        <Item>
           <NavLink to="/movies">Movies</NavLink>
-        </li>
-      </ul>
+        </Item>
+      </Wrapper>
     </nav>
   );
 };
