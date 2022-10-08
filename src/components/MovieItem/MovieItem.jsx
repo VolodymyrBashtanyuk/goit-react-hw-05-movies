@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Wrapper, Item, LinkStyle } from './MovieItemStyle';
 
 export const MovieItem = ({ items }) => {
   console.log(items);
@@ -6,11 +7,11 @@ export const MovieItem = ({ items }) => {
     console.log(title);
 
     return (
-      <li key={id}>
-        <Link to={`movies/${id}`}>{title}</Link>
-      </li>
+      <Item key={id}>
+        <LinkStyle to={`movies/${id}`}>{title}</LinkStyle>
+      </Item>
     );
   });
 
-  return <ul>{list}</ul>;
+  return <Wrapper>{list}</Wrapper>;
 };

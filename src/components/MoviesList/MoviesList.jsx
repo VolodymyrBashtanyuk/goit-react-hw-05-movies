@@ -2,10 +2,11 @@ import { ApiTrending } from 'serviceApi/ServiceApi';
 import { useState, useEffect } from 'react';
 import { MovieItem } from 'components/MovieItem/MovieItem';
 import { Loader } from 'components/Loader/Loader';
+import { Error } from './MoviesListStyle';
 
 export const MoviesList = () => {
   const [movies, setMovies] = useState(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -14,13 +15,13 @@ export const MoviesList = () => {
 
   const fetchTreding = async () => {
     setLoading(true);
-    setError('');
+    setError(false);
 
     try {
       const api = await ApiTrending();
       return setMovies(api);
     } catch (e) {
-      setError(e);
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -30,6 +31,7 @@ export const MoviesList = () => {
     <>
       {loading && <Loader loading={loading} />}
       {movies !== null && <MovieItem items={movies} />}
+      {error && <Error>Please try one more time</Error>}
     </>
   );
 };

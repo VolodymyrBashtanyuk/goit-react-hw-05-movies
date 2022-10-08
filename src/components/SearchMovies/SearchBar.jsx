@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { ImSearch } from 'react-icons/im';
+import { IconContext } from 'react-icons';
+
+import { Form, Input, Button } from './SearchBarStyle';
 
 export const SearchBar = ({ onSubmit }) => {
   const [searchName, setSearchName] = useState('');
@@ -19,9 +23,9 @@ export const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <label>
-        <input
+        <Input
           type="text"
           autoComplete="off"
           onChange={handleChange}
@@ -30,6 +34,11 @@ export const SearchBar = ({ onSubmit }) => {
           placeholder="Search movie"
         />
       </label>
-    </form>
+      <Button type="submit">
+        <IconContext.Provider value={{ className: 'icon' }}>
+          <ImSearch />
+        </IconContext.Provider>
+      </Button>
+    </Form>
   );
 };
