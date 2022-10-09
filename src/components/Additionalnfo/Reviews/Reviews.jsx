@@ -7,23 +7,25 @@ import { ReviewsList } from './ReviewsList';
 export const Reviews = () => {
   const [review, setReview] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { movieId } = useParams();
   const reviews = 'reviews';
 
   useEffect(() => {
     fetchreviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchreviews = async () => {
     setLoading(true);
-    // setError('');
+    setError(false);
 
     try {
       const api = await ApiReviews(movieId, reviews);
       setReview(api);
     } catch (e) {
-      //   setError(e);
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -32,6 +34,7 @@ export const Reviews = () => {
   return (
     <>
       {loading && <Loader />}
+      {error && <p>Sorry ( please try again</p>}
       {review !== null && <ReviewsList data={review} />}
     </>
   );

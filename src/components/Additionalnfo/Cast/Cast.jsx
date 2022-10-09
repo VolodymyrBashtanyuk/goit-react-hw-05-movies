@@ -7,23 +7,25 @@ import { Loader } from 'components/Loader/Loader';
 export const Cast = () => {
   const [cast, setCast] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { movieId } = useParams();
   const credits = 'credits';
 
   useEffect(() => {
     fetchCast();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchCast = async () => {
     setLoading(true);
-    // setError('');
+    setError(false);
 
     try {
       const api = await ApiCast(movieId, credits);
       setCast(api);
     } catch (e) {
-      //   setError(e);
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -32,6 +34,7 @@ export const Cast = () => {
   return (
     <>
       {loading && <Loader />}
+      {error && <p>Sorry ( please try again</p>}
       {cast !== null && <CastList list={cast} />}
     </>
   );

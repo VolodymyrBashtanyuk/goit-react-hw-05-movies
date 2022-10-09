@@ -1,48 +1,45 @@
 import { ApiDetails } from 'serviceApi/ServiceApi';
-import { useParams, useNavigate } from 'react-router-dom';
+import { AdditionalInfo } from 'components/Additionalnfo/AdditionalInfo';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { Loader } from 'components/Loader/Loader';
-// import { Link } from 'react-router-dom';
-import { HiChevronDoubleLeft } from 'react-icons/hi';
 
 export const DetailsPage = () => {
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { movieId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchDetails();
+    fetchDetails(movieId);
   }, [movieId]);
 
-  const fetchDetails = async () => {
+  const fetchDetails = async id => {
     setLoading(true);
-    // setError('');
+    setError(false);
 
     try {
-      const api = await ApiDetails(movieId);
+      const api = await ApiDetails(id);
       setDetails(api);
     } catch (e) {
-      //   setError(e);
+      setError(true);
     } finally {
       setLoading(false);
     }
   };
 
-  const goBack = () => {
-    navigate('/');
-  };
-
   return (
     <>
       {loading && <Loader loading={loading} />}
-      <button onClick={goBack}>
-        <HiChevronDoubleLeft />
-        go back
-      </button>
-      {details !== null && <MovieDetails data={details} />}
+      {error && <p>Sorry ( please try again</p>}
+      {details !== null && (
+        <>
+          <MovieDetails data={details} />
+          <AdditionalInfo />
+        </>
+      )}
     </>
   );
 };

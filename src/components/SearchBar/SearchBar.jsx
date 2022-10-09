@@ -1,25 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ImSearch } from 'react-icons/im';
 import { IconContext } from 'react-icons';
 
 import { Form, Input, Button } from './SearchBarStyle';
 
-export const SearchBar = ({ onSubmit }) => {
+export const SearchBar = ({ onSubmit, params }) => {
   const [searchName, setSearchName] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({});
+
+  useEffect(() => {
+    params(searchParams.get('query'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChange = evt => {
     const { value } = evt.currentTarget;
+    setSearchParams(value !== '' && { query: value });
     setSearchName(value.trim());
-    setSearchParams(value !== '' ? { query: value } : {});
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
     onSubmit(searchName.toLowerCase());
     setSearchName('');
-    // setSearchParams({});
   };
 
   return (

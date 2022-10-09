@@ -1,17 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Wrapper, Item, LinkStyle } from './MovieItemStyle';
 
 export const MovieItem = ({ items }) => {
-  console.log(items);
-  const list = items.map(({ id, title }) => {
-    console.log(title);
+  const location = useLocation();
 
+  const list = items.map(({ id, title }) => {
     return (
       <Item key={id}>
-        <LinkStyle to={`movies/${id}`}>{title}</LinkStyle>
+        <LinkStyle to={`/movies/${id}`} state={{ from: location }}>
+          {title}
+        </LinkStyle>
       </Item>
     );
   });
 
-  return <Wrapper>{list}</Wrapper>;
+  return (
+    <>
+      <Wrapper>{list}</Wrapper>
+    </>
+  );
 };
