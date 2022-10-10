@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Wrapper, Item, LinkStyle } from './MovieItemStyle';
 
 export const MovieItem = ({ items }) => {
