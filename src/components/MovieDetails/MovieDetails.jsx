@@ -1,4 +1,4 @@
-import { Outlet, useNavigate, Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   Wrapper,
   LinkToBack,
@@ -17,21 +17,16 @@ export const MovieDetails = ({ data }) => {
     data;
 
   const year = new Date(release_date);
-  const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  const backLink = location.state?.from ?? '/movies';
 
   const genre = genres.map(({ id, name }) => {
     return <Genre key={id}>{name}</Genre>;
   });
 
-  // const goBack = () => {
-  //   // navigate(-1, { replace: true });
-  // };
-
   return (
     <>
-      <LinkToBack to={location.state.from}>
+      <LinkToBack to={backLink}>
         <HiChevronDoubleLeft />
         Go back
       </LinkToBack>
