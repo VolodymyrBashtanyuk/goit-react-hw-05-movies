@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.ul`
+export const Wrapper = styled.header`
   display: flex;
   padding: 20px;
   padding-left: 80px;
@@ -9,7 +9,7 @@ export const Wrapper = styled.ul`
   margin-bottom: 20px;
 `;
 
-export const Item = styled.li`
+export const Item = styled.nav`
   font-size: 20px;
   :not(:last-child) {
     margin-right: 40px;

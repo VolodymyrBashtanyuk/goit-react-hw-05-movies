@@ -83,9 +83,6 @@ justify-content: center;
   height: 25px;
   color: inherit;
 }
-.active-link{
+.active{
   color: red;
-}
-.inactive-link{
-  color: inherit;
 }

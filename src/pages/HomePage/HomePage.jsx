@@ -32,10 +32,10 @@ export const HomePage = () => {
       {loading && <Loader loading={loading} />}
 
       {movies !== null && (
-        <>
+        <main>
           <Title>Tredding today</Title>
           <MovieItem items={movies} />
-        </>
+        </main>
       )}
       {error && <Error>Please try one more time</Error>}
     </>

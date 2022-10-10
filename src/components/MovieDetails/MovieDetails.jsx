@@ -26,23 +26,25 @@ export const MovieDetails = ({ data }) => {
 
   return (
     <>
-      <LinkToBack to={backLink}>
-        <HiChevronDoubleLeft />
-        Go back
-      </LinkToBack>
-      <Wrapper>
-        <Img src={`${imageUrl}${poster_path}`} alt={title} />
-        <div>
-          <Title>
-            {title} ({year.getFullYear()})
-          </Title>
-          <Text>User Score: {Math.round(vote_average * 10)}%</Text>
-          <SubTitle>Overview</SubTitle>
-          <Text>{overview}</Text>
-          <SubTitle>Genres</SubTitle>
-          {genre}
-        </div>
-      </Wrapper>
+      <main>
+        <LinkToBack to={backLink}>
+          <HiChevronDoubleLeft />
+          Go back
+        </LinkToBack>
+        <Wrapper>
+          <Img src={`${imageUrl}${poster_path}`} alt={title} />
+          <div>
+            <Title>
+              {title} ({year.getFullYear()})
+            </Title>
+            <Text>User Score: {Math.round(vote_average * 10)}%</Text>
+            <SubTitle>Overview</SubTitle>
+            <Text>{overview}</Text>
+            <SubTitle>Genres</SubTitle>
+            {genre}
+          </div>
+        </Wrapper>
+      </main>
     </>
   );
 };

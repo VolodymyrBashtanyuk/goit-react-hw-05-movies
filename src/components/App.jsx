@@ -10,8 +10,8 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route element={<Navication />}>
-          <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Navication />}>
+          <Route index element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:movieId" element={<DetailsPage />}>
             <Route path="cast" element={<Cast />} />
