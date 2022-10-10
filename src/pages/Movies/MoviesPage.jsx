@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { ApiSaerch } from 'serviceApi/ServiceApi';
 import { MovieItem } from 'components/MovieItem/MovieItem';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 import { Note } from './MoviesPageStyle';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [searchList, setSearchList] = useState([]);
-  const [load, setLoad] = useState(false);
+  // const [load, setLoad] = useState(false);
   const [note, setNote] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const MoviesPage = () => {
   }, [name]);
 
   const fethSearch = async searchName => {
-    setLoad(true);
+    // setLoad(true);
     setError(false);
     setNote(false);
 
@@ -32,7 +32,7 @@ export const MoviesPage = () => {
     } catch (e) {
       setError(true);
     } finally {
-      setLoad(false);
+      // setLoad(false);
     }
   };
 
@@ -54,10 +54,13 @@ export const MoviesPage = () => {
   return (
     <>
       <SearchBar onSubmit={searchSubmit} params={checkQuery} />
-      {load && <Loader />}
+      {/* {load && <Loader />} */}
+
       {error && <p>Sorry ( please try again</p>}
       {name !== '' && <MovieItem items={searchList} />}
       {note && <Note>Sorry :( no movies name {name}</Note>}
     </>
   );
 };
+
+export default MoviesPage;

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ApiReviews } from 'serviceApi/ServiceApi';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 import { ReviewsList } from './ReviewsList';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [review, setReview] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const { movieId } = useParams();
@@ -18,7 +18,7 @@ export const Reviews = () => {
   }, []);
 
   const fetchreviews = async () => {
-    setLoading(true);
+    // setLoading(true);
     setError(false);
 
     try {
@@ -27,15 +27,17 @@ export const Reviews = () => {
     } catch (e) {
       setError(true);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
   return (
     <>
-      {loading && <Loader />}
+      {/* {loading && <Loader />} */}
       {error && <p>Sorry ( please try again</p>}
       {review !== null && <ReviewsList data={review} />}
     </>
   );
 };
+
+export default Reviews;

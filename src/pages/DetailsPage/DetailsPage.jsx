@@ -3,11 +3,11 @@ import { AdditionalInfo } from 'components/Additionalnfo/AdditionalInfo';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 
-export const DetailsPage = () => {
+const DetailsPage = () => {
   const [details, setDetails] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const { movieId } = useParams();
@@ -17,7 +17,7 @@ export const DetailsPage = () => {
   }, [movieId]);
 
   const fetchDetails = async id => {
-    setLoading(true);
+    // setLoading(true);
     setError(false);
 
     try {
@@ -26,13 +26,13 @@ export const DetailsPage = () => {
     } catch (e) {
       setError(true);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
   return (
     <>
-      {loading && <Loader loading={loading} />}
+      {/* {loading && <Loader loading={loading} />} */}
       {error && <p>Sorry ( please try again</p>}
       {details !== null && (
         <>
@@ -43,3 +43,5 @@ export const DetailsPage = () => {
     </>
   );
 };
+
+export default DetailsPage;

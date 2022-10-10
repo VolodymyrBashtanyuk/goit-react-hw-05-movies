@@ -1,7 +1,9 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { Wrapper, Item } from './NavigationStyle';
+import { Loader } from 'components/Loader/Loader';
 
-export const Navication = () => {
+export const SharedLayout = () => {
   return (
     <>
       <header>
@@ -18,7 +20,9 @@ export const Navication = () => {
           </Wrapper>
         </nav>
       </header>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

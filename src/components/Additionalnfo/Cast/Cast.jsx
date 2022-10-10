@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ApiCast } from 'serviceApi/ServiceApi';
 import { CastList } from './CastList';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const { movieId } = useParams();
@@ -18,7 +18,7 @@ export const Cast = () => {
   }, []);
 
   const fetchCast = async () => {
-    setLoading(true);
+    // setLoading(true);
     setError(false);
 
     try {
@@ -27,15 +27,17 @@ export const Cast = () => {
     } catch (e) {
       setError(true);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
   return (
     <>
-      {loading && <Loader />}
+      {/* {loading && <Loader />} */}
       {error && <p>Sorry ( please try again</p>}
       {cast !== null && <CastList list={cast} />}
     </>
   );
 };
+
+export default Cast;
