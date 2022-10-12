@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Wrapper, SubTitle, Item, Info } from './ReviewsStyle';
 
 export const ReviewsList = ({ data }) => {
@@ -18,4 +19,15 @@ export const ReviewsList = ({ data }) => {
       )}
     </>
   );
+};
+
+ReviewsList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  result: PropTypes.objectOf(
+    PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      author: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
 };

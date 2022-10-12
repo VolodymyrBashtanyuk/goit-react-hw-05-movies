@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import {
   Wrapper,
@@ -47,4 +48,20 @@ export const MovieDetails = ({ data }) => {
       </main>
     </>
   );
+};
+
+MovieDetails.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      })
+    ),
+    vote_average: PropTypes.number.isRequired,
+  }),
 };

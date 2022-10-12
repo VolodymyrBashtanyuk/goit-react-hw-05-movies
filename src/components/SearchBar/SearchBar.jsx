@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ImSearch } from 'react-icons/im';
@@ -45,4 +46,9 @@ export const SearchBar = ({ onSubmit, params }) => {
       </Button>
     </Form>
   );
+};
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  params: PropTypes.func.isRequired,
 };

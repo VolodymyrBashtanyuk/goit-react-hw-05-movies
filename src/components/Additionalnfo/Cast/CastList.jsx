@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { List, Img, Text } from './CastListStyle';
 
 const imageUrl = 'https://image.tmdb.org/t/p/w200';
@@ -18,4 +19,16 @@ export const CastList = ({ list }) => {
     );
   });
   return <List>{items}</List>;
+};
+
+CastList.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object),
+  items: PropTypes.objectOf(
+    PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+      profile_path: PropTypes.string.isRequired,
+    })
+  ),
 };

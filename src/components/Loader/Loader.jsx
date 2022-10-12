@@ -1,6 +1,6 @@
-import { CirclesWithBar, Oval } from 'react-loader-spinner';
+import { CirclesWithBar} from 'react-loader-spinner';
 
-export const Loader = ({ loading }) => {
+export const Loader = () => {
   return (
     <CirclesWithBar
       height="100"
@@ -8,28 +8,11 @@ export const Loader = ({ loading }) => {
       color="#7265ec"
       wrapperStyle={{}}
       wrapperClass="loading"
-      visible={loading}
+      visible={true}
       outerCircleColor=""
       innerCircleColor=""
       barColor=""
       ariaLabel="circles-with-bar-loading"
-    />
-  );
-};
-
-export const LoadSaerch = () => {
-  return (
-    <Oval
-      height={80}
-      width={80}
-      color="#4fa94d"
-      wrapperStyle={{}}
-      wrapperClass=""
-      visible={true}
-      ariaLabel="oval-loading"
-      secondaryColor="#4fa94d"
-      strokeWidth={2}
-      strokeWidthSecondary={2}
     />
   );
 };

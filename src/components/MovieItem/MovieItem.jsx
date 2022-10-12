@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { Wrapper, Item, LinkStyle } from './MovieItemStyle';
 
@@ -19,4 +20,14 @@ export const MovieItem = ({ items }) => {
       <Wrapper>{list}</Wrapper>
     </>
   );
+};
+
+MovieItem.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object),
+  list: PropTypes.objectOf(
+    PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };
