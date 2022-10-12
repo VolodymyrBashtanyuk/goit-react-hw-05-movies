@@ -1,5 +1,7 @@
-import { useLocation } from 'react-router-dom';
+import { Suspense } from 'react';
+import { useLocation, Outlet } from 'react-router-dom';
 import { SubTitle, Container, LinkStyle } from './AdditionalInfoStyle';
+import { Loader } from 'components/Loader/Loader';
 
 export const AdditionalInfo = () => {
   const location = useLocation();
@@ -14,6 +16,9 @@ export const AdditionalInfo = () => {
           Reviews
         </LinkStyle>
       </Container>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

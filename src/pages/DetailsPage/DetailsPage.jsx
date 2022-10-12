@@ -1,9 +1,8 @@
 import { ApiDetails } from 'serviceApi/ServiceApi';
 import { AdditionalInfo } from 'components/Additionalnfo/AdditionalInfo';
-import { useParams, Outlet } from 'react-router-dom';
-import { useState, useEffect, Suspense } from 'react';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-import { Loader } from 'components/Loader/Loader';
 
 const DetailsPage = () => {
   const [details, setDetails] = useState({});
@@ -31,9 +30,6 @@ const DetailsPage = () => {
         <>
           <MovieDetails data={details} />
           <AdditionalInfo />
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
         </>
       )}
     </>
