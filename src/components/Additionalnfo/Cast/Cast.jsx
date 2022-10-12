@@ -16,14 +16,11 @@ const Cast = () => {
   }, []);
 
   const fetchCast = async () => {
-    setError(false);
-
     try {
-      const api = await ApiCast(movieId, credits);
-      setCast(api);
+      const apiCastDetails = await ApiCast(movieId, credits);
+      setCast(apiCastDetails);
     } catch (e) {
       setError(true);
-    } finally {
     }
   };
 

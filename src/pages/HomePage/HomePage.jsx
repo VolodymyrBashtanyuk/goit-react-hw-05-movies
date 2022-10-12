@@ -4,28 +4,24 @@ import { MovieItem } from 'components/MovieItem/MovieItem';
 import { Error, Title } from './HomePageStyle';
 
 const HomePage = () => {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchTreding();
   }, []);
-
   const fetchTreding = async () => {
-    setError(false);
-
     try {
-      const api = await ApiTrending();
-      return setMovies(api);
+      const apiHomePage = await ApiTrending();
+      return setMovies(apiHomePage);
     } catch (e) {
       setError(true);
-    } finally {
     }
   };
 
   return (
     <>
-      {movies !== null && (
+      {movies.length !== 0 && (
         <main>
           <Title>Tredding today</Title>
           <MovieItem items={movies} />

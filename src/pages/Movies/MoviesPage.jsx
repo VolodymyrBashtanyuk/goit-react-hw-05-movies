@@ -19,16 +19,14 @@ const MoviesPage = () => {
   }, [name]);
 
   const fethSearch = async searchName => {
-    setError(false);
     setNote(false);
 
     try {
-      const api = await ApiSaerch(searchName);
-      setSearchList(api);
-      notification(api);
+      const apiMoviesPage = await ApiSaerch(searchName);
+      setSearchList(apiMoviesPage);
+      notification(apiMoviesPage);
     } catch (e) {
       setError(true);
-    } finally {
     }
   };
 

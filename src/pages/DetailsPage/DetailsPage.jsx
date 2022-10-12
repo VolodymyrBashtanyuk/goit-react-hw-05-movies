@@ -6,7 +6,7 @@ import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { Loader } from 'components/Loader/Loader';
 
 const DetailsPage = () => {
-  const [details, setDetails] = useState(null);
+  const [details, setDetails] = useState({});
   const [error, setError] = useState(false);
 
   const { movieId } = useParams();
@@ -16,21 +16,18 @@ const DetailsPage = () => {
   }, [movieId]);
 
   const fetchDetails = async id => {
-    setError(false);
-
     try {
-      const api = await ApiDetails(id);
-      setDetails(api);
+      const apiMoviesDetails = await ApiDetails(id);
+      setDetails(apiMoviesDetails);
     } catch (e) {
       setError(true);
-    } finally {
     }
   };
 
   return (
     <>
       {error && <p>Sorry ( please try again</p>}
-      {details !== null && (
+      {Object.keys(details).length !== 0 && (
         <>
           <MovieDetails data={details} />
           <AdditionalInfo />

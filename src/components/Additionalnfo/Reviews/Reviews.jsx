@@ -21,11 +21,10 @@ const Reviews = () => {
     setError(false);
 
     try {
-      const api = await ApiReviews(movieId, reviews);
-      setReview(api);
+      const apiReviewsDetails = await ApiReviews(movieId, reviews);
+      setReview(apiReviewsDetails);
     } catch (e) {
       setError(true);
-    } finally {
     }
   };
 
