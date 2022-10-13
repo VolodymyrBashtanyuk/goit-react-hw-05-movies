@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { AdditionalInfo } from 'components/Additionalnfo/AdditionalInfo';
@@ -11,6 +12,7 @@ import {
   Genre,
 } from './MovieDetailsStyle';
 import { HiChevronDoubleLeft } from 'react-icons/hi';
+import { Loader } from 'components/Loader/Loader';
 
 const imageUrl = 'https://image.tmdb.org/t/p/w300';
 
@@ -45,7 +47,9 @@ export const MovieDetails = ({ data }) => {
           {genre}
         </div>
       </Wrapper>
-      <AdditionalInfo />
+      <Suspense fallback={<Loader />}>
+        <AdditionalInfo />
+      </Suspense>
     </>
   );
 };
