@@ -19,7 +19,7 @@ export const MovieDetails = ({ data }) => {
 
   const year = new Date(release_date);
   const location = useLocation();
-  const backLink = location.state?.from ?? '/movies';
+  const backLink = location.state.from;
 
   const genre = genres.map(({ id, name }) => {
     return <Genre key={id}>{name}</Genre>;
@@ -27,25 +27,23 @@ export const MovieDetails = ({ data }) => {
 
   return (
     <>
-      <main>
-        <LinkToBack to={backLink}>
-          <HiChevronDoubleLeft />
-          Go back
-        </LinkToBack>
-        <Wrapper>
-          <Img src={`${imageUrl}${poster_path}`} alt={title} />
-          <div>
-            <Title>
-              {title} ({year.getFullYear()})
-            </Title>
-            <Text>User Score: {Math.round(vote_average * 10)}%</Text>
-            <SubTitle>Overview</SubTitle>
-            <Text>{overview}</Text>
-            <SubTitle>Genres</SubTitle>
-            {genre}
-          </div>
-        </Wrapper>
-      </main>
+      <LinkToBack to={backLink}>
+        <HiChevronDoubleLeft />
+        Go back
+      </LinkToBack>
+      <Wrapper>
+        <Img src={`${imageUrl}${poster_path}`} alt={title} />
+        <div>
+          <Title>
+            {title} ({year.getFullYear()})
+          </Title>
+          <Text>User Score: {Math.round(vote_average * 10)}%</Text>
+          <SubTitle>Overview</SubTitle>
+          <Text>{overview}</Text>
+          <SubTitle>Genres</SubTitle>
+          {genre}
+        </div>
+      </Wrapper>
     </>
   );
 };

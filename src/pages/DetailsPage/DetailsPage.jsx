@@ -27,10 +27,10 @@ const DetailsPage = () => {
     <>
       {error && <p>Sorry ( please try again</p>}
       {Object.keys(details).length !== 0 && (
-        <>
+        <main>
           <MovieDetails data={details} />
           <AdditionalInfo />
-        </>
+        </main>
       )}
     </>
   );
