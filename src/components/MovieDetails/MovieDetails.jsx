@@ -20,8 +20,8 @@ export const MovieDetails = ({ data }) => {
 
   const year = new Date(release_date);
   const location = useLocation();
-  const backLink = location.state?.from && '/movies:id';
-
+  const backLink = location.state?.from &&
+"/movies/:movieId";
   const genre = genres.map(({ id, name }) => {
     return <Genre key={id}>{name}</Genre>;
   });
