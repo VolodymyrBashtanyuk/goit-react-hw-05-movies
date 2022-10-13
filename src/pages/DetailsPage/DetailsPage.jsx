@@ -2,6 +2,7 @@ import { ApiDetails } from 'serviceApi/ServiceApi';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
+import { AdditionalInfo } from 'components/Additionalnfo/AdditionalInfo';
 
 const DetailsPage = () => {
   const [details, setDetails] = useState({});
@@ -28,6 +29,7 @@ const DetailsPage = () => {
       {Object.keys(details).length !== 0 && (
         <main>
           <MovieDetails data={details} />
+          <AdditionalInfo />
         </main>
       )}
     </>

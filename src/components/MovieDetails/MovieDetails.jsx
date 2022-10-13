@@ -1,7 +1,5 @@
-import { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { AdditionalInfo } from 'components/Additionalnfo/AdditionalInfo';
 import {
   Wrapper,
   LinkToBack,
@@ -12,18 +10,27 @@ import {
   Genre,
 } from './MovieDetailsStyle';
 import { HiChevronDoubleLeft } from 'react-icons/hi';
-import { Loader } from 'components/Loader/Loader';
 
 const imageUrl = 'https://image.tmdb.org/t/p/w300';
 
 export const MovieDetails = ({ data }) => {
-  const { title, release_date, poster_path, overview, genres, vote_average } =
-    data;
+  const {
+    id,
+    title,
+    release_date,
+    poster_path,
+    overview,
+    genres,
+    vote_average,
+  } = data;
 
   const year = new Date(release_date);
   const location = useLocation();
 
-  const backLink = location.state?.from && '/';
+  let backLink = location.state?.from;
+  if (backLink === null) {
+    backLink = `/movies/${id}`;
+  }
   const genre = genres.map(({ id, name }) => {
     return <Genre key={id}>{name}</Genre>;
   });
@@ -47,9 +54,6 @@ export const MovieDetails = ({ data }) => {
           {genre}
         </div>
       </Wrapper>
-      <Suspense fallback={<Loader />}>
-        <AdditionalInfo />
-      </Suspense>
     </>
   );
 };
