@@ -27,7 +27,7 @@ export const MovieDetails = ({ data }) => {
   const year = new Date(release_date);
   const location = useLocation();
 
-  let backLink = location.state?.from;
+  let backLink = location.state.from;
   if (backLink === null) {
     backLink = `/movies/${id}`;
   }
