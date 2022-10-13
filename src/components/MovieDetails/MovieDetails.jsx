@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
+import { AdditionalInfo } from 'components/Additionalnfo/AdditionalInfo';
 import {
   Wrapper,
   LinkToBack,
@@ -44,6 +45,7 @@ export const MovieDetails = ({ data }) => {
           {genre}
         </div>
       </Wrapper>
+      <AdditionalInfo />
     </>
   );
 };
