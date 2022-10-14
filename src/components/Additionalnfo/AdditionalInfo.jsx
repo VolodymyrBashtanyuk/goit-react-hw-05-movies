@@ -5,14 +5,15 @@ import { Loader } from 'components/Loader/Loader';
 
 export const AdditionalInfo = () => {
   const location = useLocation();
+
   return (
     <>
       <Container>
         <SubTitle>Additional Information</SubTitle>
-        <LinkStyle to={'cast'} state={{ from: location.state.from }}>
+        <LinkStyle to={'cast'} state={{ from: location.state?.from }}>
           Cast
         </LinkStyle>
-        <LinkStyle to={'reviews'} state={{ from: location.state.from }}>
+        <LinkStyle to={'reviews'} state={{ from: location.state?.from }}>
           Reviews
         </LinkStyle>
       </Container>
