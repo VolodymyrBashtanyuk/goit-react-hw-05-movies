@@ -21,12 +21,10 @@ export const MovieDetails = ({ data }) => {
   const location = useLocation();
 
   let backLink = location.state?.from && '/';
-  console.log(backLink);
 
   const genre = genres.map(({ id, name }) => {
     return <Genre key={id}>{name}</Genre>;
   });
-
   return (
     <>
       <LinkToBack to={backLink}>
